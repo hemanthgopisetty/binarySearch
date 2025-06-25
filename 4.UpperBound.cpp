@@ -8,7 +8,7 @@ using namespace std;
 class Solution
 {
 public:
-    int firstGreaterThan(vector<int> &nums, int x)
+    int UpperBound(vector<int> &nums, int x)
     {
         sort(nums.begin(), nums.end());
         int low = 0;
@@ -39,15 +39,23 @@ int main()
     vector<int> a{8,4,7};
     int x = 10;
     Solution sol;
-    int result = sol.firstGreaterThan(a, x);
-    cout << "First Element Greater than Target " << x << " is " << (result != -1 ? a[result] : a[a.size() - 1]) << endl;
+    int result = sol.UpperBound(a, x);
+    cout << "Upper Bound of" << x << " is " << (result != -1 ? a[result] : -1 )<< endl;
 
     return 0;
 }
 
 /***************************************************
  * find first element greater than target
- *
+ * which is nothing but the upper bound
+ * bound means end
+ * 
+ * where as 
+ * lower bound means -> greater than or  equal to the target
+ * upper bound means -> strictly greater than the target(one past element to the target)
+ * 
+ * lb-1 -> strictyl lower than the target
+ * ub-1 -> lower than or equal to the target
  *
  * 1,2,3,4,5 -> [] , x = 6
  * ans -> 5
